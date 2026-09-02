@@ -15,18 +15,39 @@ void main() {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset('assets/logo.png', width: 200),
+
                 const SizedBox(height: 30),
+
                 const Text(
                   'Learn Flutter the fun way!',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-                const SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Start Quiz',
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
+                ),
+
+                const SizedBox(height: 20),
+
+                Builder(
+                  builder: (context) {
+                    return TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Quiz(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Start Quiz',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -35,4 +56,17 @@ void main() {
       ),
     ),
   );
+}
+
+class Quiz extends StatelessWidget {
+  const Quiz({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('yaba daba testing'),
+      ),
+    );
+  }
 }
