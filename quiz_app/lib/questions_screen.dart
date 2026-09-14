@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'quiz_question.dart';
 
 class QuestionsScreen extends StatelessWidget {
@@ -24,7 +24,7 @@ class QuestionsScreen extends StatelessWidget {
             children: [
               Text(
                 question.question,
-                style: const TextStyle(fontSize: 20, color: Colors.black),
+                style: const TextStyle(fontSize: 20, color: Color.fromARGB(255, 255, 255, 255)),
                 textAlign: TextAlign.center,
               ),
 
@@ -37,24 +37,34 @@ class QuestionsScreen extends StatelessWidget {
                     onPressed: () {
                       onSelectAnswer(question.answers[0]);
                     },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 52, 6, 112),
+                    ),
                     child: Text(
                       question.answers[0],
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ),
+
+                  const SizedBox(width: 10),
 
                   TextButton(
                     onPressed: () {
                       onSelectAnswer(question.answers[1]);
                     },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 52, 6, 112),
+                      ),
                     child: Text(
                       question.answers[1],
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ),
                 ],
               ),
 
+              const SizedBox(height: 10),
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -62,19 +72,27 @@ class QuestionsScreen extends StatelessWidget {
                     onPressed: () {
                       onSelectAnswer(question.answers[2]);
                     },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 52, 6, 112),
+                     ),
                     child: Text(
                       question.answers[2],
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ),
+
+                  const SizedBox(width: 10),
 
                   TextButton(
                     onPressed: () {
                       onSelectAnswer(question.answers[3]);
                     },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 52, 6, 112),
+                      ),
                     child: Text(
                       question.answers[3],
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ),
                 ],

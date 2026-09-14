@@ -8,42 +8,46 @@ const questions = [
     'Components',
     'Blocks',
     'Functions',
-  ]),
+  ], correctAnswer: 'Widgets'),
 
-  Quiztion('What language does Flutter use?', [
-    'Dart',
-    'Java',
-    'C++',
-    'Python',
-  ]),
+  Quiztion('How are FLutter UIs built?', [
+    'By combining widgets in a visual editor',
+    'By using XCode for IOS and Android Studio for Android',
+    'By combining widgets in code',
+    'By defining widgets in a configuration file',
+  ], correctAnswer: 'By combining widgets in code'),
 
-  Quiztion('What is a widget in Flutter?', [
-    'A building block of the UI',
-    'A database',
-    'A programming language',
-    'A file',
-  ]),
+  Quiztion('What is the purpose of a StatefulWidget?', [
+    'Render UI that does not depend on data',
+    'Update data as UI changes',
+    'Ignore data changes',
+    'Update UI as data changes',
+  ], correctAnswer: 'Update UI as data changes'),
 
-  Quiztion('Which widget can change its state?', [
-    'StatefulWidget',
-    'StatelessWidget',
-    'Text',
-    'Container',
-  ]),
+  Quiztion(
+    'Which widget should you try more often: Stateless Widget or StatefulWidget?',
+    [
+      'StatefulWidget',
+      'StatelessWidget',
+      'None of the above',
+      'Both are equally good',
+    ],
+    correctAnswer: 'StatelessWidget',
+  ),
 
-  Quiztion('Which widget is used when the UI does not need to change?', [
-    'StatelessWidget',
-    'StatefulWidget',
-    'Scaffold',
-    'MaterialApp',
-  ]),
+  Quiztion('What happens when you change data in a StatelessWidget?', [
+    'The closes StatefulWidget is updated',
+    'The UI is updated',
+    'Any nested StatefulWidget is updated',
+    'The UI is not updated',
+  ], correctAnswer: 'The UI is not updated'),
 
-  Quiztion('What does setState() do?', [
-    'Updates the UI',
-    'Deletes the UI',
-    'Closes the app',
-    'Creates a widget',
-  ]),
+  Quiztion('How should you update data inside of StatefulWidgets?', [
+    'By calling setState()',
+    'By calling updateUI()',
+    'By calling updateData()',
+    'By calling updateState()',
+  ], correctAnswer: 'By calling setState()'),
 ];
 
 class Quiz extends StatefulWidget {
@@ -60,7 +64,7 @@ class _QuizState extends State<Quiz> {
   int score = 0;
 
   void answerQuestion(String answer) {
-    if (answer == questions[questionNumber].answers[0]) {
+    if (answer == questions[questionNumber].correctAnswer) {
       score++;
     }
 
@@ -73,10 +77,20 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     if (questionNumber == questions.length) {
       return Scaffold(
-        body: Center(
-          child: Text(
-            'Score: $score / 6',
-            style: const TextStyle(fontSize: 30),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.deepPurple, Colors.purple],
+            ),
+          ),
+          child: Center(
+            child: Text(
+              'You answered $score out of 6 questions correctly!',
+              style: const TextStyle(
+                fontSize: 30,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
+            ),
           ),
         ),
       );
