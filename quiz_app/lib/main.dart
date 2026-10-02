@@ -13,7 +13,7 @@ void main() {
             body: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.deepPurple, Colors.purple],
+                   colors: [Colors.deepPurple, Colors.purple],
                 ),
               ),
               child: StartScreen(() {
@@ -26,6 +26,6 @@ void main() {
           );
         },
       ),
-    ),
+    ),  
   );
 }
