@@ -19,7 +19,7 @@ class ChartBar extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-              color: Color(0xFFFFC72C), // sunshine yellow
+              color: Color(0xFFFFC72C),
             ),
           ),
         ),

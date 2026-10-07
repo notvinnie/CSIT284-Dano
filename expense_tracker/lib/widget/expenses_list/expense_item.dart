@@ -14,35 +14,47 @@ class ExpenseItem extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 16,
+          horizontal: 16,
+          vertical: 14,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Text(
-              expense.title,
-              style: Theme.of(context).textTheme.titleLarge,
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).colorScheme.primaryContainer,
+              ),
+              child: Icon(
+                categoryIcons[expense.category],
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
             ),
-            const SizedBox(height: 4),
-            Row(
-              children: [
-                Text(
-                  '\$${expense.amount.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: accent,
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    expense.title,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                ),
-                const Spacer(),
-                Row(
-                  children: [
-                    Icon(categoryIcons[expense.category], color: accent),
-                    const SizedBox(width: 8),
-                    Text(expense.formattedDate),
-                  ],
-                ),
-              ],
+                  const SizedBox(height: 2),
+                  Text(
+                    expense.formattedDate,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              '\$${expense.amount.toStringAsFixed(2)}',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                color: accent,
+              ),
             ),
           ],
         ),
