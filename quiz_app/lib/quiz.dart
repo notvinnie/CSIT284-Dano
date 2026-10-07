@@ -17,12 +17,16 @@ const questions = [
     'By defining widgets in a configuration file',
   ], correctAnswer: 'By combining widgets in code'),
 
-  Quiztion('What is the purpose of a StatefulWidget?', [
-    'Render UI that does not depend on data',
-    'Update data as UI changes',
-    'Ignore data changes',
-    'Update UI as data changes',
-  ], correctAnswer: 'Update UI as data changes'),
+  Quiztion(
+    'What is the purpose of a StatefulWidget?',
+    [
+      'Render UI that does not depend on data',
+      'Update data as UI changes',
+      'Ignore data changes',
+      'Update UI as data changes',
+    ],
+    correctAnswer: 'Update UI as data changes',
+  ),
 
   Quiztion(
     'Which widget should you try more often: Stateless Widget or StatefulWidget?',
@@ -35,19 +39,27 @@ const questions = [
     correctAnswer: 'StatelessWidget',
   ),
 
-  Quiztion('What happens when you change data in a StatelessWidget?', [
-    'The closes StatefulWidget is updated',
-    'The UI is updated',
-    'Any nested StatefulWidget is updated',
-    'The UI is not updated',
-  ], correctAnswer: 'The UI is not updated'),
+  Quiztion(
+    'What happens when you change data in a StatelessWidget?',
+    [
+      'The closes StatefulWidget is updated',
+      'The UI is updated',
+      'Any nested StatefulWidget is updated',
+      'The UI is not updated',
+    ],
+    correctAnswer: 'The UI is not updated',
+  ),
 
-  Quiztion('How should you update data inside of StatefulWidgets?', [
-    'By calling setState()',
-    'By calling updateUI()',
-    'By calling updateData()',
-    'By calling updateState()',
-  ], correctAnswer: 'By calling setState()'),
+  Quiztion(
+    'How should you update data inside of StatefulWidgets?',
+    [
+      'By calling setState()',
+      'By calling updateUI()',
+      'By calling updateData()',
+      'By calling updateState()',
+    ],
+    correctAnswer: 'By calling setState()',
+  ),
 ];
 
 class Quiz extends StatefulWidget {
