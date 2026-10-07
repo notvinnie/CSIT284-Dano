@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget {
-  const ChartBar({
-    super.key,
-    required this.fill,
-  });
+  const ChartBar({super.key, required this.fill});
 
   final double fill;
 
@@ -13,8 +10,13 @@ class ChartBar extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),
-        child: FractionallySizedBox(
-          heightFactor: fill, // 0 <> 1
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 0, end: fill),
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeOutCubic,
+          builder: (context, value, child) {
+            return FractionallySizedBox(heightFactor: value, child: child);
+          },
           child: const DecoratedBox(
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,

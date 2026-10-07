@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:expense_tracker/widget/expenses.dart';
 
 const kNavy = Color(0xFF0B1F4B);
@@ -8,9 +7,7 @@ const kSunYellow = Color(0xFFFFC72C);
 const kPaleYellow = Color(0xFFFFF3C4);
 const kSkyBackground = Color(0xFFEAF1FF);
 
-final kColorScheme = ColorScheme.fromSeed(
-  seedColor: kRoyalBlue,
-).copyWith(
+final kColorScheme = ColorScheme.fromSeed(seedColor: kRoyalBlue).copyWith(
   primary: kRoyalBlue,
   onPrimary: Colors.white,
   primaryContainer: kSunYellow,
@@ -23,21 +20,22 @@ final kColorScheme = ColorScheme.fromSeed(
   onSurface: kNavy,
 );
 
-final kDarkColorScheme = ColorScheme.fromSeed(
-  brightness: Brightness.dark,
-  seedColor: kRoyalBlue,
-).copyWith(
-  primary: kSunYellow,
-  onPrimary: kNavy,
-  primaryContainer: kSunYellow,
-  onPrimaryContainer: kNavy,
-  secondary: const Color(0xFF6EA8FF),
-  onSecondary: kNavy,
-  secondaryContainer: const Color(0xFF16336E),
-  onSecondaryContainer: Colors.white,
-  surface: const Color(0xFF08142E),
-  onSurface: Colors.white,
-);
+final kDarkColorScheme =
+    ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: kRoyalBlue,
+    ).copyWith(
+      primary: kSunYellow,
+      onPrimary: kNavy,
+      primaryContainer: kSunYellow,
+      onPrimaryContainer: kNavy,
+      secondary: const Color(0xFF6EA8FF),
+      onSecondary: kNavy,
+      secondaryContainer: const Color(0xFF16336E),
+      onSecondaryContainer: Colors.white,
+      surface: const Color(0xFF08142E),
+      onSurface: Colors.white,
+    );
 
 void main() {
   runApp(
@@ -46,9 +44,7 @@ void main() {
         colorScheme: kDarkColorScheme,
         scaffoldBackgroundColor: kDarkColorScheme.surface,
         inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: kSunYellow, width: 2),
@@ -64,14 +60,9 @@ void main() {
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
-            side: BorderSide(
-              color: kSunYellow.withValues(alpha: 0.35),
-            ),
+            side: BorderSide(color: kSunYellow.withValues(alpha: 0.35)),
           ),
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
         bottomSheetTheme: const BottomSheetThemeData().copyWith(
           backgroundColor: const Color(0xFF0E2457),
@@ -100,9 +91,7 @@ void main() {
         colorScheme: kColorScheme,
         scaffoldBackgroundColor: kSkyBackground,
         inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: kRoyalBlue, width: 2),
@@ -123,10 +112,7 @@ void main() {
               width: 1.5,
             ),
           ),
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
         bottomSheetTheme: const BottomSheetThemeData().copyWith(
           backgroundColor: Colors.white,
@@ -141,9 +127,7 @@ void main() {
           ),
         ),
         textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            foregroundColor: kColorScheme.primary,
-          ),
+          style: TextButton.styleFrom(foregroundColor: kColorScheme.primary),
         ),
         snackBarTheme: const SnackBarThemeData().copyWith(
           backgroundColor: kNavy,
@@ -151,12 +135,12 @@ void main() {
           actionTextColor: kSunYellow,
         ),
         textTheme: ThemeData().textTheme.copyWith(
-              titleLarge: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: kColorScheme.onSecondaryContainer,
-                fontSize: 16,
-              ),
-            ),
+          titleLarge: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: kColorScheme.onSecondaryContainer,
+            fontSize: 16,
+          ),
+        ),
       ),
       // themeMode: ThemeMode.system, // default
       home: const Expenses(),
