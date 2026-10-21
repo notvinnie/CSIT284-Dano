@@ -1,0 +1,24 @@
+Lastname_Midterm/
+└── campus_wellness_tracker/
+    ├── lib/
+    │   ├── main.dart
+    │   ├── screens/
+    │   │   ├── home_screen.dart
+    │   │   ├── assessment_screen.dart
+    │   │   └── results_screen.dart
+    │   ├── widgets/
+    │   │   ├── question_display.dart
+    │   │   └── answer_button.dart
+    │   ├── models/
+    │   │   └── question.dart
+    │   └── data/
+    │       └── questions.dart
+    ├── assets/
+    ├── screenshots/
+    │   ├── home.png
+    │   ├── assessment.png
+    │   ├── results.png
+    │   ├── portrait.png
+    │   └── landscape.png
+    ├── pubspec.yaml
+    └── pubspec.lock
