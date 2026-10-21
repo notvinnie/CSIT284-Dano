@@ -5,6 +5,29 @@ class MainDrawer extends StatelessWidget {
 
   final void Function(String identifier) onSelectScreen;
 
+  Widget _buildTile(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String identifier,
+  }) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        size: 26,
+        color: Theme.of(context).colorScheme.onSurface,
+      ),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          color: Theme.of(context).colorScheme.onSurface,
+          fontSize: 24,
+        ),
+      ),
+      onTap: () => onSelectScreen(identifier),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -42,35 +65,23 @@ class MainDrawer extends StatelessWidget {
               ],
             ),
           ),
-          ListTile(
-            leading: Icon(
-              Icons.restaurant,
-              size: 26,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
-            title: Text(
-              'Meals',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: 24,
-              ),
-            ),
-            onTap: () => onSelectScreen('meals'),
+          _buildTile(
+            context,
+            icon: Icons.restaurant,
+            title: 'Meals',
+            identifier: 'meals',
           ),
-          ListTile(
-            leading: Icon(
-              Icons.settings,
-              size: 26,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
-            title: Text(
-              'Filters',
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-                fontSize: 24,
-              ),
-            ),
-            onTap: () => onSelectScreen('filters'),
+          _buildTile(
+            context,
+            icon: Icons.settings,
+            title: 'Filters',
+            identifier: 'filters',
+          ),
+          _buildTile(
+            context,
+            icon: Icons.info_outline,
+            title: 'About',
+            identifier: 'about',
           ),
         ],
       ),

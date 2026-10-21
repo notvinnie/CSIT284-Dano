@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/screens/about.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
@@ -67,6 +68,10 @@ class _TabsScreenState extends State<TabsScreen> {
       setState(() {
         _selectedFilters = result ?? kInitialFilters;
       });
+    } else if (identifier == 'about') {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (ctx) => const AboutScreen()),
+      );
     }
   }
 
