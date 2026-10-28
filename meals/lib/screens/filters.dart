@@ -47,7 +47,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
-      activeColor: Theme.of(context).colorScheme.tertiary,
+      activeThumbColor: Theme.of(context).colorScheme.tertiary,
       contentPadding: const EdgeInsets.only(left: 34, right: 22),
     );
   }
