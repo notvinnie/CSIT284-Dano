@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:campushub/providers/activity_favorites_provider.dart';
+import 'package:campushub/providers/settings_provider.dart';
 import 'package:campushub/screens/activity_detail_screen.dart';
+import 'package:campushub/widgets/adaptive_network_image.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -15,8 +16,8 @@ class FavoritesScreen extends StatelessWidget {
         title: const Text('My Favorites'),
       ),
 
-      body: Consumer<ActivityFavoritesProvider>(
-        builder: (context, favoritesProvider, child) {
+      body: Consumer2<ActivityFavoritesProvider, SettingsProvider>(
+        builder: (context, favoritesProvider, settings, child) {
 
           final favoriteActivities =
               favoritesProvider.getFavorites();
@@ -59,17 +60,16 @@ class FavoritesScreen extends StatelessWidget {
                       margin: const EdgeInsets.all(10),
 
                       child: ListTile(
-                        leading: Image.network(
-                          activity.imageUrl,
+                        leading: AdaptiveNetworkImage(
+                          url: activity.imageUrl,
                           width: 60,
                           height: 60,
-                          fit: BoxFit.cover,
                         ),
 
                         title: Text(activity.title),
 
                         subtitle: Text(
-                          '${activity.duration} minutes',
+                          settings.formatDuration(activity.duration),
                         ),
 
                         trailing: IconButton(
