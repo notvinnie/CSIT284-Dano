@@ -7,8 +7,8 @@ import 'package:campushub/models/activity_category.dart';
 import 'package:campushub/providers/activity_favorites_provider.dart';
 import 'package:campushub/providers/settings_provider.dart';
 import 'package:campushub/screens/activity_detail_screen.dart';
-import 'package:campushub/widgets/adaptive_network_image.dart';
-import 'package:campushub/widgets/animated_favorite_button.dart';
+import 'package:campushub/widgets/activity_grid_card.dart';
+import 'package:campushub/widgets/activity_list_card.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({
@@ -27,129 +27,6 @@ class ActivitiesScreen extends StatelessWidget {
             activity: activity,
           );
         },
-      ),
-    );
-  }
-
-  Widget buildListCard(
-    BuildContext context,
-    Activity activity,
-    ActivityFavoritesProvider favoritesProvider,
-    SettingsProvider settings,
-  ) {
-    final isFavorite = favoritesProvider.isFavorite(activity);
-
-    return Card(
-      margin: const EdgeInsets.all(10),
-
-      child: ListTile(
-        contentPadding: const EdgeInsets.all(10),
-
-        leading: AdaptiveNetworkImage(
-          url: activity.imageUrl,
-          width: 70,
-          height: 70,
-        ),
-
-        title: Text(activity.title),
-
-        subtitle: Text(
-          'Duration: ${settings.formatDuration(activity.duration)}\n'
-          'Skill Level: ${activity.skillLevel.name}',
-        ),
-
-        isThreeLine: true,
-
-        trailing: AnimatedFavoriteButton(
-          isFavorite: isFavorite,
-
-          onPressed: () {
-            favoritesProvider.toggleFavorite(activity);
-          },
-        ),
-
-        onTap: () {
-          openDetail(context, activity);
-        },
-      ),
-    );
-  }
-
-  Widget buildGridCard(
-    BuildContext context,
-    Activity activity,
-    ActivityFavoritesProvider favoritesProvider,
-    SettingsProvider settings,
-  ) {
-    final isFavorite = favoritesProvider.isFavorite(activity);
-
-    return Card(
-      clipBehavior: Clip.antiAlias,
-
-      child: InkWell(
-        onTap: () {
-          openDetail(context, activity);
-        },
-
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-
-          children: [
-
-            Expanded(
-              child: AdaptiveNetworkImage(
-                url: activity.imageUrl,
-                width: double.infinity,
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 8, 4, 4),
-
-              child: Row(
-                children: [
-
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      children: [
-                        Text(
-                          activity.title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                        const SizedBox(height: 4),
-
-                        Text(
-                          '${settings.formatDuration(activity.duration)}'
-                          ' • ${activity.skillLevel.name}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  AnimatedFavoriteButton(
-                    isFavorite: isFavorite,
-
-                    onPressed: () {
-                      favoritesProvider.toggleFavorite(activity);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -188,11 +65,17 @@ class ActivitiesScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final activity = filteredActivities[index];
 
-                          return buildListCard(
-                            context,
-                            activity,
-                            favoritesProvider,
-                            settings,
+                          return ActivityListCard(
+                            activity: activity,
+                            isFavorite: favoritesProvider.isFavorite(activity),
+                            durationText:
+                                settings.formatDuration(activity.duration),
+                            onTap: () {
+                              openDetail(context, activity);
+                            },
+                            onFavoritePressed: () {
+                              favoritesProvider.toggleFavorite(activity);
+                            },
                           );
                         },
                       );
@@ -214,11 +97,17 @@ class ActivitiesScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final activity = filteredActivities[index];
 
-                        return buildGridCard(
-                          context,
-                          activity,
-                          favoritesProvider,
-                          settings,
+                        return ActivityGridCard(
+                          activity: activity,
+                          isFavorite: favoritesProvider.isFavorite(activity),
+                          durationText:
+                              settings.formatDuration(activity.duration),
+                          onTap: () {
+                            openDetail(context, activity);
+                          },
+                          onFavoritePressed: () {
+                            favoritesProvider.toggleFavorite(activity);
+                          },
                         );
                       },
                     );
